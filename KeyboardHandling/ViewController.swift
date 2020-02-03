@@ -33,16 +33,21 @@ class ViewController: UIViewController {
     
     @objc
     private func keyboardWillShow(notification: NSNotification) {
-        print(notification.userInfo)
-        
-        guard let keyboardFrame = notification.userInfo["UIKeyboardFrameBeginUserInfoKey"] as? CGRect else {
-            return 
+        guard let keyboardFrame = notification.userInfo?["UIKeyboardFrameBeginUserInfoKey"] as? CGRect else {
+            return
         }
+        print(keyboardFrame)
+        moveKeyboardUp(height: keyboardFrame.size.height)
     }
     
     @objc
     private func keyboardWillHide(notification: NSNotification) {
+        print("willHide")
         print(notification.userInfo)
+    }
+    
+    private func moveKeyboardUp(height: CGFloat) {
+       pursuitCenterYConstraint.constant -= height
     }
 
 
