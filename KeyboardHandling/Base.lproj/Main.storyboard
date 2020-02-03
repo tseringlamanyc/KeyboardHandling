@@ -21,19 +21,42 @@
                                     <constraint firstAttribute="width" secondItem="j0l-LF-cyo" secondAttribute="height" multiplier="1:1" id="RXl-t9-arZ"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Eoh-a8-ALf">
-                                <rect key="frame" x="20" y="560" width="374" height="254"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Eoh-a8-ALf">
+                                <rect key="frame" x="20" y="571.5" width="374" height="100"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your username " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ars-qD-jH6">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Unx-3T-VeG">
+                                        <rect key="frame" x="0.0" y="60" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="rRF-Vz-e07"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="j0l-LF-cyo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="OsR-5x-c0l"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Eoh-a8-ALf" secondAttribute="trailing" constant="20" id="Qsz-CA-obd"/>
                             <constraint firstItem="j0l-LF-cyo" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="TKh-a3-VfV"/>
+                            <constraint firstItem="Eoh-a8-ALf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Tdc-ya-bMk"/>
+                            <constraint firstItem="Eoh-a8-ALf" firstAttribute="top" secondItem="j0l-LF-cyo" secondAttribute="bottom" constant="20" id="ZU8-eu-ba2"/>
                             <constraint firstItem="j0l-LF-cyo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oqI-iF-yqw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="passWord" destination="Unx-3T-VeG" id="JNL-70-pn3"/>
+                        <outlet property="pursuitCenterYConstraint" destination="OsR-5x-c0l" id="xHI-uC-N0q"/>
+                        <outlet property="pursuitLogo" destination="j0l-LF-cyo" id="fGK-gl-KSM"/>
+                        <outlet property="userName" destination="ars-qD-jH6" id="FBF-b5-68c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
