@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForKeyBoardNotifications()
+        userName.delegate = self
+        passWord.delegate = self
     }
     
     private var isKeyboardThere = false
@@ -53,7 +55,12 @@ class ViewController: UIViewController {
        isKeyboardThere = true
        pursuitCenterYConstraint.constant -= height
     }
+}
 
-
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
