@@ -24,6 +24,8 @@ class ViewController: UIViewController {
     
     private var isKeyboardThere = false
     
+    private var originalState: NSLayoutConstraint!
+    
     private func registerForKeyBoardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -46,14 +48,23 @@ class ViewController: UIViewController {
     
     @objc
     private func keyboardWillHide(notification: NSNotification) {
-        print("willHide")
-        print(notification.userInfo)
+        resetUI()
     }
     
     private func moveKeyboardUp(height: CGFloat) {
        if isKeyboardThere {return}
+        originalState = pursuitCenterYConstraint
        isKeyboardThere = true
        pursuitCenterYConstraint.constant -= height
+        
+        UIView.animate(withDuration: 1.0) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func resetUI() {
+        isKeyboardThere = false
+        pursuitCenterYConstraint.constant -= originalState.constant
     }
 }
 
