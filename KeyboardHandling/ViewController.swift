@@ -18,8 +18,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerForKeyBoardNotifications()
+        pulsateLogo()
         userName.delegate = self
         passWord.delegate = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unregisterForKeyBoardNotifications()
     }
     
     private var isKeyboardThere = false
@@ -65,6 +70,15 @@ class ViewController: UIViewController {
     private func resetUI() {
         isKeyboardThere = false
         pursuitCenterYConstraint.constant -= originalState.constant
+        UIView.animate(withDuration: 1.0) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    private func pulsateLogo() {
+        UIView.animate(withDuration: 0.8, delay: 0.0, options: [.repeat, .autoreverse], animations: {
+            self.pursuitLogo.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }, completion: nil)
     }
 }
 
