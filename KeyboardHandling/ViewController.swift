@@ -20,6 +20,8 @@ class ViewController: UIViewController {
         registerForKeyBoardNotifications()
     }
     
+    private var isKeyboardThere = false
+    
     private func registerForKeyBoardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
@@ -47,6 +49,8 @@ class ViewController: UIViewController {
     }
     
     private func moveKeyboardUp(height: CGFloat) {
+       if isKeyboardThere {return}
+       isKeyboardThere = true
        pursuitCenterYConstraint.constant -= height
     }
 
